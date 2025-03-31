@@ -47,10 +47,10 @@ pipeline {
             echo '📦 Pipeline finished!'
         }
         success {
-            echo '✅ Build Success!'
+            echo ' Build Success!'
         }
         failure {
-            echo '❌ Build Failed!'
+            echo ' Build Failed!'
         }
     }
 }

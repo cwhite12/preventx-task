@@ -12,5 +12,5 @@ import io.cucumber.junit.CucumberOptions;
         monochrome = true,
         tags = "@test"
 )
-public class WebRunner {
+public class Runner {
 }

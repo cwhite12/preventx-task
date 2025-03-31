@@ -1,6 +1,5 @@
 @test
-Feature: Products API Testing
-
+Feature: PreventX API Testing
 
   Scenario: Get all products
     When I send a GET request to "https://automationexercise.com/api/productsList"

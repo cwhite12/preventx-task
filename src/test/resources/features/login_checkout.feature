@@ -9,3 +9,4 @@ Feature: Purchase three items
     Then I proceed to checkout
     When I enter checkout details "John", "Doe", "12345"
     Then I complete the checkout
+    Then I should see the order confirmation message
