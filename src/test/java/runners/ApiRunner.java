@@ -8,9 +8,9 @@ import io.cucumber.junit.CucumberOptions;
 @CucumberOptions(
         features = "src/test/resources/features",
         glue = "stepDefinitions",
-        plugin = {"pretty","io.qameta.allure.cucumber7jvm.AllureCucumber7Jvm", "html:target/cucumber-reports.html"},
+        plugin = {"pretty", "html:target/cucumber-reports.html"},
         monochrome = true,
-        tags = "@test"
+        tags = "@get or @post"
 )
-public class WebRunner {
+public class ApiRunner {
 }
