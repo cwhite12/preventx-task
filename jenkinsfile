@@ -1,0 +1,56 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'Maven3'
+        jdk 'JDK17'
+    }
+
+    environment {
+
+        ALLURE_RESULTS = 'target/allure-results'
+    }
+
+    stages {
+        stage('Checkout Code') {
+            steps {
+                echo '🔄 Cloning Repository...'
+                checkout scm
+            }
+        }
+
+        stage('Build & Test') {
+            steps {
+                echo '🔨 Running Maven Tests...'
+                sh 'mvn clean test'
+            }
+        }
+
+        stage('Allure Report') {
+            steps {
+                echo '📊 Generating Allure Results...'
+            }
+            post {
+                always {
+                    allure([
+                        includeProperties: false,
+                        jdk: '',
+                        results: [[path: "${env.ALLURE_RESULTS}"]]
+                    ])
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo '📦 Pipeline finished!'
+        }
+        success {
+            echo '✅ Build Success!'
+        }
+        failure {
+            echo '❌ Build Failed!'
+        }
+    }
+}
